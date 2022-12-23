@@ -20,9 +20,9 @@ void main() {
 	vec4 position = gl_ModelViewMatrix * gl_Vertex;
 		
 	float distanceSquared = position.x * position.x + position.z * position.z;
-	position.x += sin(distanceSquared*sin(float(worldTrome)/(143.0 * 8))/1000);
+	position.x += -1 * (sin(distanceSquared * sin(float(worldTrome) / (143.0 * 8)) / 1000));
 	//position.z += sin(distanceSquared*sin(float(worldTrome)/(143.0 * 8))/1000);
-	position.y += 8*sin(distanceSquared*sin(float(worldTrome)/(143.0 * 8))/2000);
+	position.y += -8 * sin(distanceSquared * sin(float(worldTrome) / (143.0 * 8)) / 2000);
 		
 	float y = position.y;
 	float x = position.x;
