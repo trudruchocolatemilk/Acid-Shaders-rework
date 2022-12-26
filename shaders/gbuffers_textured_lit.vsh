@@ -20,22 +20,23 @@ void main() {
 	vec4 position = gl_ModelViewMatrix * gl_Vertex;
 		
 	float distanceSquared = position.x * position.x + position.z * position.z;
-	position.x += -1 * (sin(distanceSquared * sin(float(worldTrome) / (143.0 * 8)) / 1000));
-	//position.z += sin(distanceSquared*sin(float(worldTrome)/(143.0 * 8))/1000);
-	position.y += -8 * sin(distanceSquared * sin(float(worldTrome) / (143.0 * 8)) / 2000);
+	position.x += -1 * (sin(distanceSquared * sin(float(worldTrome) / (143.0 * 8)) / 750));
+	//position.z += sin(distanceSquared * sin(float(worldTrome) / (143.0 * 8)) / 750);
+	position.y += -8 * sin(distanceSquared * sin(float(worldTrome) / (143.0 * 8)) / 1500);
 		
 	float y = position.y;
 	float x = position.x;
 	float z = position.z;
 		
-	float om = (sin(distanceSquared*sin(float(worldTrome)/131072.0)/5000) * sin(float(worldTrome)/400.0));
+	float om = (sin(distanceSquared * sin(float(worldTrome) / 131072.0) / 2000) * sin(float(worldTrome) / 400.0));
+	//float om = (sin(distanceSquared * sin((float(worldTrome) * 20.0 + 36000.0) / 256.0) / 5000.0) * sin((float(worldTrome) * 20.0 + 36000.0) / 200.0)) / 2;
 		
-	position.y = x*sin(om)+y*cos(om);
-	position.x = x*cos(om)-y*sin(om);
+	position.y = x * sin(om) + y * cos(om);
+	position.x = x * cos(om) - y * sin(om);
 	position.z = z;
 
 	gl_Position = gl_ProjectionMatrix * position; //Update position of matrix
-	// color = vec4(sqrt(vec4(gl_Color))) + vec4((10/position.z) * (sin(position.x) * sin(z*2)), (10/position.z) * (sin(position.y) * cos(z)), (10/position.z) * (sin(position.z * sin(z * 2))), 0);
+	//color = vec4(sqrt(vec4(gl_Color))) + vec4((10/position.z) * (sin(position.x) * sin(z*2)), (10/position.z) * (sin(position.y) * cos(z)), (10/position.z) * (sin(position.z * sin(z * 2))), 0);
 	color = gl_Color;
 
 	lmcoord = gl_TextureMatrix[1] * gl_MultiTexCoord1;
